@@ -16,12 +16,14 @@
 | Wiggle   |             | creates a wiggle                  |
 
 ## Bot Owner
-| Commands           | Arguments | Description                                   |
-| ------------------ | --------- | --------------------------------------------- |
-| AddBeeFact         | Bee fact  | Add a Bee fact.                               |
-| CreateRolesMessage |           | create roles message                          |
-| EditRolesMessage   |           | edits roles message                           |
-| Kill               |           | Kill the bot. It will remember this decision. |
+| Commands           | Arguments   | Description                                   |
+| ------------------ | ----------- | --------------------------------------------- |
+| AddBeeFact         | Bee fact    | Add a Bee fact.                               |
+| CreateRolesMessage |             | create roles message                          |
+| EditRolesMessage   |             | edits roles message                           |
+| Kill               |             | Kill the bot. It will remember this decision. |
+| down, d            |             | moves the character down                      |
+| monki              | (@username) | gives monki                                   |
 
 ## Compliments
 | Commands            | Arguments   | Description      |
@@ -37,6 +39,7 @@
 ## Fun
 | Commands            | Arguments   | Description                                                                                                                               |
 | ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Agis                |             | Summons Agis from the Pits of Hell                                                                                                        |
 | BeeFacts, Bee, Bees | (User)      | Get a fact about Bees!                                                                                                                    |
 | Boo                 |             | BOOOOOOOOO                                                                                                                                |
 | Brr                 | (@username) | bot go brr                                                                                                                                |

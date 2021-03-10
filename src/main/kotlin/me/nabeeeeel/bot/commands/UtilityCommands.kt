@@ -1,5 +1,6 @@
 package me.nabeeeeel.bot.commands
 
+import dev.kord.common.Color
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import me.jakejmattson.discordkt.api.arguments.EveryArg
@@ -8,7 +9,6 @@ import me.jakejmattson.discordkt.api.arguments.UserArg
 import me.jakejmattson.discordkt.api.dsl.commands
 import me.nabeeeeel.bot.data.Configuration
 import me.nabeeeeel.bot.services.ListService
-import java.awt.Color
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -33,7 +33,7 @@ fun utilityCommands(configuration: Configuration, listService: ListService) = co
 
     command("Remind", "R", "Timer") {
         description = "Remind you of something in a certain amount of minutes. The default is 5 minutes."
-        execute(UserArg("@username").makeOptional { it.author }, TimeArg("# sec/min/hour/day/year").makeOptional { 500.0 }, EveryArg("reminder message").makeOptional { ", this is your reminder!" }) {
+        execute(UserArg("@username").optional { it.author }, TimeArg("# sec/min/hour/day/year").optional { 500.0 }, EveryArg("reminder message").optional { ", this is your reminder!" }) {
             val (user, time, message) = args
 
             Timer().schedule((time * 1000).toLong()) {

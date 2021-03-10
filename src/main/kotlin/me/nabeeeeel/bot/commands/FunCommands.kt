@@ -1,14 +1,17 @@
 package me.nabeeeeel.bot.commands
 
-import com.gitlab.kordlib.kordx.emoji.Emojis
-import com.gitlab.kordlib.kordx.emoji.toReaction
+
+import dev.kord.common.Color
+import dev.kord.common.entity.Snowflake
+import dev.kord.x.emoji.Emojis
+import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.MultipleArg
 import me.jakejmattson.discordkt.api.arguments.UserArg
 import me.jakejmattson.discordkt.api.dsl.commands
 import me.nabeeeeel.bot.data.Configuration
 import me.nabeeeeel.bot.extensions.addReactions
 import me.nabeeeeel.bot.services.ListService
-import java.awt.Color
+
 
 // creates category
 fun funCommands(configuration: Configuration, listService: ListService) = commands("Fun") {
@@ -60,7 +63,7 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
 
     command("BeeFacts", "Bee", "Bees") {
         description = "Get a fact about Bees!"
-        execute(UserArg.makeOptional { it.author }) {
+        execute(UserArg.optional { it.author }) {
             respond {
                 title = ":bee: B E E :bee:"
                 color = listOf(Color(222, 222, 0), Color(0, 0, 0)).random()
@@ -89,7 +92,7 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
 
     command("Brr") {
         description = "bot go brr"
-        execute(UserArg("@username").makeOptional { it.author }) {
+        execute(UserArg("@username").optional { it.author }) {
             respond("Bot go brrrr")
         }
     }
@@ -98,14 +101,14 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
         description = "BOOOOOOOOO"
         execute() {
             val botMessage = channel.createMessage(Emojis.b.unicode + Emojis.o2.unicode.repeat(20))
-            botMessage.addReactions(Emojis.ghost, Emojis.b, Emojis.o2, Emojis.o)
+            botMessage.addReactions(Emojis.ghost.toReaction(), Emojis.b.toReaction(), Emojis.o2.toReaction(), Emojis.o.toReaction())
             message.addReaction(Emojis.ghost.toReaction())
         }
     }
 
     command("Whomst") {
         description = "Can't decide who to vote kick? Use this."
-        execute(MultipleArg(UserArg("Users")).makeOptional { listOf(it.author) }) {
+        execute(MultipleArg(UserArg("Users")).optional { listOf(it.author) }) {
             val userList = args.first.randomOrNull() ?: author
             respond("${userList.mention} is the imposter.")
         }
@@ -113,7 +116,7 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
 
     command("Jail") {
         description = "Is someone acting up? They may need to go to jail."
-        execute(UserArg("User").makeOptional{it.author}) {
+        execute(UserArg("User").optional{it.author}) {
             val user = args.first
             val botMessage = respond {
                 title = ":rotating_light: G O  T O  H O R N Y  J A I L :rotating_light:"
@@ -123,15 +126,15 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
                 description = ":rotating_light: ${user.mention} is going to horny jail :rotating_light:"
             }
             botMessage.addReactions(
-                    Emojis.rotatingLight,
-                    Emojis.regionalIndicatorG,
-                    Emojis.o2,
-                    Emojis.regionalIndicatorT,
-                    Emojis.regionalIndicatorO,
-                    Emojis.regionalIndicatorJ,
-                    Emojis.a,
-                    Emojis.regionalIndicatorI,
-                    Emojis.regionalIndicatorL
+                    Emojis.rotatingLight.toReaction(),
+                    Emojis.regionalIndicatorG.toReaction(),
+                    Emojis.o2.toReaction(),
+                    Emojis.regionalIndicatorT.toReaction(),
+                    Emojis.regionalIndicatorO.toReaction(),
+                    Emojis.regionalIndicatorJ.toReaction(),
+                    Emojis.a.toReaction(),
+                    Emojis.regionalIndicatorI.toReaction(),
+                    Emojis.regionalIndicatorL.toReaction()
             )
         }
     }
@@ -144,6 +147,19 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
                 it.addReaction(Emojis.regionalIndicatorE.toReaction())
             }
             message.delete();
+        }
+    }
+
+    command("Agis") {
+        description = "Summons Agis from the Pits of Hell"
+        execute() {
+            val botMessage = respond {
+                val agis = discord.kord.getUser(Snowflake(219610743727718400))?.mention
+                for (i in 1..15) {
+                    message.channel.createMessage("$agis")
+                }
+
+            }
         }
     }
 }

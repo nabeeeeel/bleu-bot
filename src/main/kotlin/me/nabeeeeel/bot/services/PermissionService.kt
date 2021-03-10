@@ -1,6 +1,7 @@
 package me.nabeeeeel.bot.services
 
-import com.gitlab.kordlib.core.entity.Member
+
+import dev.kord.core.entity.Member
 import me.jakejmattson.discordkt.api.annotations.Service
 import me.nabeeeeel.bot.data.Configuration
 
@@ -24,6 +25,6 @@ class PermissionsService(private val configuration: Configuration) {
                 else -> Permission.USER
             }
 
-    private fun Member.isBotOwner() = id.longValue == configuration.botOwner
+    private fun Member.isBotOwner() = id.value == configuration.botOwner
     private suspend fun Member.isGuildOwner() = isOwner()
 }

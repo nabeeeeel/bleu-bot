@@ -1,7 +1,9 @@
 package me.nabeeeeel.bot.commands
 
-import com.gitlab.kordlib.kordx.emoji.Emojis
-import com.gitlab.kordlib.kordx.emoji.toReaction
+
+import dev.kord.common.Color
+import dev.kord.x.emoji.Emojis
+import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.SplitterArg
 import me.jakejmattson.discordkt.api.dsl.commands
 import me.jakejmattson.discordkt.api.extensions.toTimeString
@@ -23,7 +25,7 @@ fun testCommands(configuration: Configuration, listService: ListService, pollSer
         description = "a test command to make sure the bot is working"
         execute {
             respond {
-                color = discord.configuration.theme
+                color = discord.configuration.theme as Color
                 val seconds = Date().time - startDate.time
                 field {
                     name = "Total Uptime"

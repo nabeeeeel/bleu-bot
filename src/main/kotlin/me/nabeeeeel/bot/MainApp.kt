@@ -1,29 +1,30 @@
 package me.nabeeeeel.bot
-
-import com.gitlab.kordlib.common.entity.Snowflake
+import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.Snowflake
 import me.jakejmattson.discordkt.api.dsl.bot
 import me.jakejmattson.discordkt.api.extensions.profileLink
 import me.nabeeeeel.bot.extensions.requiredPermissionLevel
 import me.nabeeeeel.bot.services.PermissionsService
-import java.awt.Color
 
 
+@KordPreview
 suspend fun main(args: Array<String>) {
 
     val token = args.first()
+
     bot(token) {
         prefix {
             val configuration = discord.getInjectionObjects(me.nabeeeeel.bot.data.Configuration::class)
-            guild?.let { configuration[it.id.longValue]?.prefix } ?: "<none>"
+            guild?.let { configuration[it.id.value]?.prefix } ?: "-"
         }
         configure {
-            theme = Color(17, 32, 109)
+            theme = java.awt.Color(17, 32, 109)
             allowMentionPrefix = true
         }
 
         mentionEmbed {
             val discord = it.discord
-            val api = discord.api
+            val api = discord.kord
             val versions = discord.versions
             //val role = it.guild?.idLong?.let { me.nabeeeeel.bot.data.configuration[it]?.getLiveRole(jda)?.tag } ?: "<None>"
 

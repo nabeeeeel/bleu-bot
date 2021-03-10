@@ -1,10 +1,11 @@
 package me.nabeeeeel.bot.services
 
-import com.gitlab.kordlib.common.entity.Snowflake
-import com.gitlab.kordlib.core.entity.Guild
-import com.gitlab.kordlib.core.entity.ReactionEmoji
-import com.gitlab.kordlib.kordx.emoji.Emojis
-import com.gitlab.kordlib.kordx.emoji.toReaction
+
+import dev.kord.common.entity.Snowflake
+import dev.kord.core.entity.Guild
+import dev.kord.core.entity.ReactionEmoji
+import dev.kord.x.emoji.Emojis
+import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.annotations.Service
 
 @Service
@@ -23,4 +24,6 @@ class RoleService {
     )
 
     fun getGames(guild: Guild) = gameRoles[guild.id]
+
+
 }

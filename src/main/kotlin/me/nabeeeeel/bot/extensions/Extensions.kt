@@ -1,13 +1,14 @@
 package me.nabeeeeel.bot.extensions
 
-import com.gitlab.kordlib.core.entity.Message
-import com.gitlab.kordlib.core.entity.ReactionEmoji
-import com.gitlab.kordlib.kordx.emoji.DiscordEmoji
-import com.gitlab.kordlib.kordx.emoji.toReaction
+import dev.kord.common.entity.DiscordEmoji
+import dev.kord.core.entity.Message
+import dev.kord.core.entity.ReactionEmoji
+import dev.kord.x.emoji.toReaction
+import dev.kord.x.emoji.Emojis
 
-suspend fun Message.addReactions(vararg reactions: DiscordEmoji) { //
+suspend fun Message.addReactions(vararg reactions: ReactionEmoji) { //
     reactions.forEach {
-        addReaction(it.toReaction())
+        addReaction(it)
     }
 }
 

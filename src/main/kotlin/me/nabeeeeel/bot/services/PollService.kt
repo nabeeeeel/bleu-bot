@@ -1,9 +1,9 @@
 package me.nabeeeeel.bot.services
 
-import com.gitlab.kordlib.common.entity.Snowflake
-import com.gitlab.kordlib.core.entity.Message
-import com.gitlab.kordlib.kordx.emoji.Emojis
-import com.gitlab.kordlib.kordx.emoji.toReaction
+import dev.kord.common.entity.Snowflake
+import dev.kord.core.entity.Message
+import dev.kord.x.emoji.Emojis
+import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.annotations.Service
 
 @Service

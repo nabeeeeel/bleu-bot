@@ -1,8 +1,14 @@
 package me.nabeeeeel.bot.commands
 
-import com.gitlab.kordlib.common.entity.Snowflake
-import com.gitlab.kordlib.core.behavior.edit
+
+import dev.kord.common.Color
+import dev.kord.common.entity.Snowflake
+import dev.kord.core.behavior.edit
+import dev.kord.rest.route.Route
+import dev.kord.x.emoji.Emojis
+import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.EveryArg
+import me.jakejmattson.discordkt.api.arguments.UserArg
 import me.jakejmattson.discordkt.api.dsl.commands
 import me.jakejmattson.discordkt.api.extensions.addField
 import me.nabeeeeel.bot.extensions.addReactions
@@ -10,7 +16,6 @@ import me.nabeeeeel.bot.extensions.requiredPermissionLevel
 import me.nabeeeeel.bot.services.ListService
 import me.nabeeeeel.bot.services.Permission
 import me.nabeeeeel.bot.services.RoleService
-import java.awt.Color
 import kotlin.system.exitProcess
 
 
@@ -79,6 +84,36 @@ fun botOwnerCommands(roleService: RoleService,
                     addField("", roles)
                 }
             }
+        }
+    }
+
+    command("monki") {
+        description = "gives monki"
+        execute(UserArg("@username").optional { it.author }) {
+            val monkiTarget = args.first
+            monkiTarget.asMember(Snowflake(753132775040614421)).addRole(Snowflake(753135012202938380))
+        }
+    }
+
+    command("down", "d") {
+        description = "moves the character down"
+        execute() {
+            val botMessage = respond {
+                title = "Pokemon Emerald"
+                color = Color(192,0,0)
+                image = "https://cdn.discordapp.com/attachments/742653177186222172/816080991072419921/pokemon-emerald-randomizer-03.png"
+            }
+            botMessage.addReactions(
+                Emojis.arrowLeft.toReaction(),
+                Emojis.arrowUp.toReaction(),
+                Emojis.arrowDown.toReaction(),
+                Emojis.arrowRight.toReaction(),
+                Emojis.regionalIndicatorA.toReaction(),
+                Emojis.regionalIndicatorB.toReaction(),
+                Emojis.ballotBoxWithCheck.toReaction(),
+                Emojis.regionalIndicatorX.toReaction()
+            )
+
         }
     }
 }

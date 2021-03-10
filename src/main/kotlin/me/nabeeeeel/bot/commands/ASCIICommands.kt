@@ -57,7 +57,7 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
 
     command("Imposter") {
         description = "Are you the imposter?"
-        execute(UserArg("@username").makeOptional { it.author}) {
+        execute(UserArg("@username").optional { it.author}) {
             val user = args.first
             val remaining = (1..2).random()
             val imposter = if (listOf(true, false).random()) " was an imposter." else " was not an imposter."

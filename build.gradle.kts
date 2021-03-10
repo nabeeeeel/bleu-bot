@@ -1,13 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-group = "me.nabeeeeel"
-version = "0.0.1a"
-
-
-
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.4.21"
 }
+
+group = "me.nabeel"
+version = "0.0.2"
 
 repositories {
     mavenCentral()
@@ -18,12 +16,13 @@ repositories {
 }
 
 dependencies {
-    implementation("me.jakejmattson:DiscordKt:0.21.0")
-    implementation("org.apache.commons:commons-math3:3.6.1")
+    implementation("me.jakejmattson:DiscordKt:0.22.0-SNAPSHOT")
+}
+
+tasks.test {
+    useJUnit()
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-
-
+    kotlinOptions.jvmTarget = "13"
 }
