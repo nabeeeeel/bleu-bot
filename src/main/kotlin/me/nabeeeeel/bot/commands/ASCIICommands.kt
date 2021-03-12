@@ -1,6 +1,8 @@
 package me.nabeeeeel.bot.commands
 
-import me.jakejmattson.discordkt.api.arguments.UserArg
+import com.sun.jdi.connect.Connector
+import dev.kord.common.entity.ApplicationCommandOptionType
+import me.jakejmattson.discordkt.api.arguments.*
 import me.jakejmattson.discordkt.api.dsl.commands
 import me.nabeeeeel.bot.services.ListService
 
@@ -92,6 +94,47 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
         description = "creates a wiggle"
         execute() {
             respond(listService.wiggle)
+        }
+    }
+    
+    command("FYP") {
+        description = "For you!"
+        execute(EveryArg("Thing to give here.").optional {"-16 LP"}) {
+           val item = args.first
+            respond("""
+                ╭┻-━━┻╮-
+                 ┃╭╮╭╮┃
+                ╭┫▕▎▕▎┣╮
+                ╰┓┳╰╯┳┏╯ For You
+                ╭┛╰━━╯┗━━━╮
+                ┃┃ o o ┏━╭╰╯╮
+                ┃┃ o o ┃┏┻━━┻┓
+                ╰┫ ╭╮ ┃┃ ┃ $item
+                 ┃ ┃┃ ┃╰━━━━╯
+                ╭┛ ┃┃ ┗-╮
+            """.trimIndent())
+        }
+    }
+
+    command("SurprisedPikachu", "SPika") {
+        description = "Surprised Pikachu!"
+        execute() {
+            respond("""
+                ⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣠⣤⣶⣶
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⢰⣿⣿⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⣀⣾⣿⣿⣿⣿
+                ⣿⣿⣿⣿⣿⡏⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿
+                ⣿⣿⣿⣿⣿⣿⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠁⠀⣿
+                ⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠙⠿⠿⠿⠻⠿⠿⠟⠿⠛⠉⠀⠀⠀⠀⠀⣸⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣴⣿⣿⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⢰⣹⡆⠀⠀⠀⠀⠀⠀⣭⣷⠀⠀⠀⠸⣿⣿⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠈⠉⠀⠀⠤⠄⠀⠀⠀⠉⠁⠀⠀⠀⠀⢿⣿⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⢾⣿⣷⠀⠀⠀⠀⡠⠤⢄⠀⠀⠀⠠⣿⣿⣷⠀⢸⣿⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⡀⠉⠀⠀⠀⠀⠀⢄⠀⢀⠀⠀⠀⠀⠉⠉⠁⠀⠀⣿⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿
+            """.trimIndent())
         }
     }
 

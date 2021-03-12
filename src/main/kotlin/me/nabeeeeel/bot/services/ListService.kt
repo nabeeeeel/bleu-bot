@@ -84,7 +84,9 @@ class ListService {
             "The second 'e' in bee is silent",
             "The first 'e' in bee is silent",
             "Both 'e's in bee are silent",
-            "The 'b' in bee is silent"
+            "The 'b' in bee is silent",
+            "The US has never lost a war involving a Bee Militia",
+            "The US has never won a war involving a Bee Militia"
     )
 
     val paellas = listOf(

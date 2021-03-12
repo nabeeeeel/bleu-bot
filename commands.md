@@ -7,13 +7,14 @@
 | Argument... | Accepts many of this argument. |
 
 ## ASCII
-| Commands | Arguments   | Description                       |
-| -------- | ----------- | --------------------------------- |
-| AmongUs  |             | Among us?                         |
-| FallGuy  |             | Fall Guys?                        |
-| GG       |             | Say GG in the most eccentric way. |
-| Imposter | (@username) | Are you the imposter?             |
-| Wiggle   |             | creates a wiggle                  |
+| Commands | Arguments             | Description                       |
+| -------- | --------------------- | --------------------------------- |
+| AmongUs  |                       | Among us?                         |
+| FYP      | (Thing to give here.) | For you!                          |
+| FallGuy  |                       | Fall Guys?                        |
+| GG       |                       | Say GG in the most eccentric way. |
+| Imposter | (@username)           | Are you the imposter?             |
+| Wiggle   |                       | creates a wiggle                  |
 
 ## Bot Owner
 | Commands           | Arguments   | Description                                   |
