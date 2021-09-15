@@ -4,10 +4,8 @@ import dev.kord.x.emoji.Emojis
 import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.AnyArg
 import me.jakejmattson.discordkt.api.arguments.EveryArg
-import me.jakejmattson.discordkt.api.dsl.commands
+import me.jakejmattson.discordkt.api.commands.commands
 import me.nabeeeeel.bot.data.Configuration
-import me.nabeeeeel.bot.extensions.addReactions
-import me.nabeeeeel.bot.extensions.requiredPermissionLevel
 import me.nabeeeeel.bot.services.ListService
 import me.nabeeeeel.bot.services.Permission
 
@@ -18,11 +16,11 @@ fun discordOwnerCommands(configuration: Configuration, listService: ListService)
     // looks at configuration object, then set prefix field for the current guild(discord server)
     command("SetPrefix") {
         description = "Set the prefix required for the bot to register a command."
-        requiredPermissionLevel = Permission.GUILD_OWNER
+        requiredPermission = Permission.GUILD_OWNER
         execute(AnyArg("Prefix")) {
             val prefix = args.first
             //configuration.guildConfigurations[it.guild!!.idLong]?.prefix = prefix
-            configuration[guild!!.id.value]?.prefix = prefix // replaces above code by overwriting
+            configuration[guild.id.value]?.prefix = prefix // replaces above code by overwriting
             configuration.save()
             respond("Prefix set to: $prefix")
         }
@@ -30,11 +28,11 @@ fun discordOwnerCommands(configuration: Configuration, listService: ListService)
 
     command("Thumbs") {
         description = "Display a question with :thumbsup: and :thumbsdown: as reactions"
-        requiredPermissionLevel = Permission.GUILD_OWNER
+        requiredPermission = Permission.GUILD_OWNER
         execute(EveryArg("Question")) {
             val question = args.first
-            val botMessage = respond { description = question}
-            botMessage.addReactions(Emojis.thumbsup.toReaction(), Emojis.thumbsdown.toReaction())
+            val botMessage = respond { description = question }
+            //botMessage.addReactions(Emojis.thumbsup.toReaction(), Emojis.thumbsdown.toReaction())
             message.delete()
         }
     }

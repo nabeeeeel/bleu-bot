@@ -1,12 +1,16 @@
 package me.nabeeeeel.bot
+
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
+import dev.kord.gateway.Intent
+import dev.kord.gateway.Intents
+import dev.kord.gateway.PrivilegedIntent
 import me.jakejmattson.discordkt.api.dsl.bot
 import me.jakejmattson.discordkt.api.extensions.profileLink
-import me.nabeeeeel.bot.extensions.requiredPermissionLevel
-import me.nabeeeeel.bot.services.PermissionsService
+import me.nabeeeeel.bot.services.Permission
 
 
+@PrivilegedIntent
 @KordPreview
 suspend fun main(args: Array<String>) {
 
@@ -20,6 +24,8 @@ suspend fun main(args: Array<String>) {
         configure {
             theme = java.awt.Color(17, 32, 109)
             allowMentionPrefix = true
+            intents = Intents.nonPrivileged + Intent.GuildMembers
+            permissions(Permission.USER)
         }
 
         mentionEmbed {
@@ -78,13 +84,13 @@ suspend fun main(args: Array<String>) {
             listening("SUGGESTIONS")
         }
 
-        permissions {
-            val guild = guild ?: return@permissions false
-            val member = user.asMember(guild.id)
-            val permission = command.requiredPermissionLevel
-
-            val permissionsService = discord.getInjectionObjects(PermissionsService::class)
-            permissionsService.hasClearance(member, permission)
-        }
+//        permissions {
+//            val guild = guild ?: return@permissions false
+//            val member = user.asMember(guild.id)
+//            val permission = command.requiredPermission
+//
+//            val permissionsService = discord.getInjectionObjects(PermissionsService::class)
+//            permissionsService.hasClearance(member, permission)
+//        }
     }
 }

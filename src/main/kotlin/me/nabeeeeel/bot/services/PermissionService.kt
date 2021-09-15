@@ -1,30 +1,26 @@
 package me.nabeeeeel.bot.services
 
 
-import dev.kord.core.entity.Member
-import me.jakejmattson.discordkt.api.annotations.Service
+import me.jakejmattson.discordkt.api.dsl.PermissionContext
+import me.jakejmattson.discordkt.api.dsl.PermissionSet
 import me.nabeeeeel.bot.data.Configuration
 
 
-enum class Permission {
-    BOT_OWNER,
-    GUILD_OWNER,
-    USER
-}
-
-val DEFAULT_REQUIRED_PERMISSION = Permission.USER
-
-@Service
-class PermissionsService(private val configuration: Configuration) {
-    suspend fun hasClearance(member: Member, requiredPermissionLevel: Permission) = member.getPermissionLevel().ordinal <= requiredPermissionLevel.ordinal
-
-    private suspend fun Member.getPermissionLevel() =
-            when {
-                isBotOwner() -> Permission.BOT_OWNER
-                isGuildOwner() -> Permission.GUILD_OWNER
-                else -> Permission.USER
-            }
-
-    private fun Member.isBotOwner() = id.value == configuration.botOwner
-    private suspend fun Member.isGuildOwner() = isOwner()
+enum class Permission : PermissionSet {
+    BOT_OWNER {
+        override suspend fun hasPermission(context: PermissionContext): Boolean {
+            val configuration = context.discord.getInjectionObjects<Configuration>()
+            return context.getMember()?.id?.value == configuration.botOwner
+        }
+    },
+    GUILD_OWNER {
+        override suspend fun hasPermission(context: PermissionContext): Boolean {
+            return context.getMember()?.isOwner() ?: false
+        }
+    },
+    USER {
+        override suspend fun hasPermission(context: PermissionContext): Boolean {
+            return true
+        }
+    }
 }

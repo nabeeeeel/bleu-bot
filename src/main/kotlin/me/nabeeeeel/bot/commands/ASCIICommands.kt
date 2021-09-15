@@ -1,19 +1,20 @@
 package me.nabeeeeel.bot.commands
 
-import com.sun.jdi.connect.Connector
-import dev.kord.common.entity.ApplicationCommandOptionType
-import me.jakejmattson.discordkt.api.arguments.*
-import me.jakejmattson.discordkt.api.dsl.commands
+import me.jakejmattson.discordkt.api.arguments.EveryArg
+import me.jakejmattson.discordkt.api.arguments.MemberArg
+import me.jakejmattson.discordkt.api.arguments.UserArg
+import me.jakejmattson.discordkt.api.commands.commands
 import me.nabeeeeel.bot.services.ListService
 
 
 // creates category
-fun asciiCommands(listService : ListService) = commands("ASCII") {
+fun asciiCommands(listService: ListService) = commands("ASCII") {
 
-    command("FallGuy") {
+    slash("FallGuy") {
         description = "Fall Guys?"
-        execute() {
-            respond("""
+        execute {
+            respond(
+                """
                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠉⠉⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠄⢀⣠⣶⣶⣶⣶⣤⡀⠄⠄⠹⣿⣿⣿⣿⣿⣿⣿⣿
                     ⣿⣿⣿⣿⣿⣿⣿⣿⡏⠄⠄⣾⡿⢿⣿⣿⡿⢿⣿⡆⠄⠄⢻⣿⣿⣿⣿⣿⣿⣿
@@ -26,14 +27,16 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
                     ⣿⣿⣇⠄⣰⣶⣿⣿⣿⣦⣀⡀⠄⠄⠄⠄⠄⠄⠄⢀⣠⣴⣿⣿⣿⣶⣆⠄⢀⣿
                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠄⠄⢸⣿⠇⠄⠄⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣤⣴⣾⣿⣶⣤⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 
-    command("AmongUs") {
+    slash("AmongUs") {
         description = "Among us?"
-        execute() {
-            respond("""
+        execute {
+            respond(
+                """
                     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀
                     ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀
                     ⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀
@@ -53,18 +56,20 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
                     ⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀⠀⣸⣿⠇⠀
                     ⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀
                     ⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 
-    command("Imposter") {
+    slash("Imposter") {
         description = "Are you the imposter?"
-        execute(UserArg("@username").optional { it.author}) {
+        execute(MemberArg) {
             val user = args.first
             val remaining = (1..2).random()
             val imposter = if (listOf(true, false).random()) " was an imposter." else " was not an imposter."
 
-            respond("""
+            respond(
+                """
                 .      　。　　　　•　    　ﾟ　　。
                 　　.　　　.　　　  　　.　　　　　。　　   。　.
                  　.　　      。　        ඞ   。　    .    •
@@ -73,35 +78,57 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
                 　 　　。　　 　　　　ﾟ　　　.　      　　　.
                 ,　　　　.　 .　　       .
                             
-            """.trimIndent())
+            """.trimIndent()
+            )
+        }
+        execute(UserArg) {
+            val user = args.first
+            val remaining = (1..2).random()
+            val imposter = if (listOf(true, false).random()) " was an imposter." else " was not an imposter."
+
+            respond(
+                """
+                .      　。　　　　•　    　ﾟ　　。
+                　　.　　　.　　　  　　.　　　　　。　　   。　.
+                 　.　　      。　        ඞ   。　    .    •
+                   •       ${user.username + imposter}　    。　.
+                     。    $remaining Impostors remain   .
+                　 　　。　　 　　　　ﾟ　　　.　      　　　.
+                ,　　　　.　 .　　       .
+                            
+            """.trimIndent()
+            )
         }
     }
-    
-    command("GG") {
+
+    slash("GG") {
         description = "Say GG in the most eccentric way."
-        execute() {
-            respond("""
+        execute {
+            respond(
+                """
                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                 ░░░█▀▀▀░█▀▀▀░░█▀▀░▀▀█░░█░░░░
                 ░░░█░▀█░█░▀█░░█▀▀░▄▀░░░▀░░░░
                 ░░░▀▀▀▀░▀▀▀▀░░▀▀▀░▀▀▀░░▀░░░░
                 ░░░░░░░░░░░░░░░░░░░( ͡⚆ ͜ʖ ͡⚆)╭∩╮
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 
-    command("Wiggle") {
+    slash("Wiggle") {
         description = "creates a wiggle"
-        execute() {
+        execute {
             respond(listService.wiggle)
         }
     }
-    
-    command("FYP") {
+
+    slash("FYP") {
         description = "For you!"
-        execute(EveryArg("Thing to give here.").optional {"-16 LP"}) {
-           val item = args.first
-            respond("""
+        execute(EveryArg("Item").optional { "-16 LP" }) {
+            val item = args.first
+            respond(
+                """
                 ╭┻-━━┻╮-
                  ┃╭╮╭╮┃
                 ╭┫▕▎▕▎┣╮
@@ -112,14 +139,16 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
                 ╰┫ ╭╮ ┃┃ ┃ $item
                  ┃ ┃┃ ┃╰━━━━╯
                 ╭┛ ┃┃ ┗-╮
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 
-    command("SurprisedPikachu", "SPika") {
+    slash("SurprisedPikachu", "SPika") {
         description = "Surprised Pikachu!"
-        execute() {
-            respond("""
+        execute {
+            respond(
+                """
                 ⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣠⣤⣶⣶
                 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⢰⣿⣿⣿⣿
                 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⣀⣾⣿⣿⣿⣿
@@ -134,7 +163,8 @@ fun asciiCommands(listService : ListService) = commands("ASCII") {
                 ⣿⣿⣿⣿⣿⣿⣿⣿⡀⠉⠀⠀⠀⠀⠀⢄⠀⢀⠀⠀⠀⠀⠉⠉⠁⠀⠀⣿⣿⣿
                 ⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿
                 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 

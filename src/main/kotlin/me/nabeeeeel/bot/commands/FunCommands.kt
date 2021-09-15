@@ -7,7 +7,7 @@ import dev.kord.x.emoji.Emojis
 import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.MultipleArg
 import me.jakejmattson.discordkt.api.arguments.UserArg
-import me.jakejmattson.discordkt.api.dsl.commands
+import me.jakejmattson.discordkt.api.commands.commands
 import me.nabeeeeel.bot.data.Configuration
 import me.nabeeeeel.bot.extensions.addReactions
 import me.nabeeeeel.bot.services.ListService
@@ -41,7 +41,7 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
                 title = "H U G"
                 color = Color((0..255).random(), (0..255).random(), (0..255).random())
                 image =
-                        listOf("https://media0.giphy.com/media/EvYHHSntaIl5m/giphy.gif?cid=ecf05e47hgm5fldt3ib7oc0t73qvif63wy2g3erl2fxe1bn0&rid=giphy.gif").random()
+                    listOf("https://media0.giphy.com/media/EvYHHSntaIl5m/giphy.gif?cid=ecf05e47hgm5fldt3ib7oc0t73qvif63wy2g3erl2fxe1bn0&rid=giphy.gif").random()
             }
         }
     }
@@ -52,11 +52,11 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
             val user = args.first
             respond {
                 description =
-                        "${this@execute.author.tag} licked ${user.tag} ... what is wrong with you? Why would you make a command that would lick someone? Degenerates."
+                    "${this@execute.author.tag} licked ${user.tag} ... what is wrong with you? Why would you make a command that would lick someone? Degenerates."
                 title = "L I C K"
                 color = Color((0..255).random(), (0..255).random(), (0..255).random())
                 image =
-                        listOf("https://media1.tenor.com/images/4a630250fde9e5ac634373369bb58f4b/tenor.gif?itemid=5509072").random()
+                    listOf("https://media1.tenor.com/images/4a630250fde9e5ac634373369bb58f4b/tenor.gif?itemid=5509072").random()
             }
         }
     }
@@ -73,8 +73,9 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
     }
 
     command("Paella") {
-        description = "Paella (pai·ei·uh) is a classic Spanish rice dish made with rice, saffron, vegetables, chicken, and seafood cooked and served in one pan."
-        execute() {
+        description =
+            "Paella (pai·ei·uh) is a classic Spanish rice dish made with rice, saffron, vegetables, chicken, and seafood cooked and served in one pan."
+        execute {
             respond {
                 title = "P A E L L A"
                 color = Color((0..255).random(), (0..255).random(), (0..255).random())
@@ -99,9 +100,14 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
 
     command("Boo") {
         description = "BOOOOOOOOO"
-        execute() {
+        execute {
             val botMessage = channel.createMessage(Emojis.b.unicode + Emojis.o2.unicode.repeat(20))
-            botMessage.addReactions(Emojis.ghost.toReaction(), Emojis.b.toReaction(), Emojis.o2.toReaction(), Emojis.o.toReaction())
+            botMessage.addReactions(
+                Emojis.ghost.toReaction(),
+                Emojis.b.toReaction(),
+                Emojis.o2.toReaction(),
+                Emojis.o.toReaction()
+            )
             message.addReaction(Emojis.ghost.toReaction())
         }
     }
@@ -116,43 +122,45 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
 
     command("Jail") {
         description = "Is someone acting up? They may need to go to jail."
-        execute(UserArg("User").optional{it.author}) {
+        execute(UserArg("User").optional { it.author }) {
             val user = args.first
             val botMessage = respond {
                 title = ":rotating_light: G O  T O  H O R N Y  J A I L :rotating_light:"
                 color = Color((0..255).random(), (0..255).random(), (0..255).random())
                 image =
-                        "https://media1.tenor.com/images/6493bee2be7ae168a5ef7a68cf751868/tenor.gif?itemid=17298755"
+                    "https://media1.tenor.com/images/6493bee2be7ae168a5ef7a68cf751868/tenor.gif?itemid=17298755"
                 description = ":rotating_light: ${user.mention} is going to horny jail :rotating_light:"
             }
-            botMessage.addReactions(
-                    Emojis.rotatingLight.toReaction(),
-                    Emojis.regionalIndicatorG.toReaction(),
-                    Emojis.o2.toReaction(),
-                    Emojis.regionalIndicatorT.toReaction(),
-                    Emojis.regionalIndicatorO.toReaction(),
-                    Emojis.regionalIndicatorJ.toReaction(),
-                    Emojis.a.toReaction(),
-                    Emojis.regionalIndicatorI.toReaction(),
-                    Emojis.regionalIndicatorL.toReaction()
-            )
+            TODO( "WAIT FOR JAKE")
+//            botMessage.addReactions(
+//                Emojis.rotatingLight.toReaction(),
+//                Emojis.regionalIndicatorG.toReaction(),
+//                Emojis.o2.toReaction(),
+//                Emojis.regionalIndicatorT.toReaction(),
+//                Emojis.regionalIndicatorO.toReaction(),
+//                Emojis.regionalIndicatorJ.toReaction(),
+//                Emojis.a.toReaction(),
+//                Emojis.regionalIndicatorI.toReaction(),
+//                Emojis.regionalIndicatorL.toReaction()
+//            )
         }
     }
 
     command("ESpam") {
         description = "Prints 'e' 10 times"
-        execute() {
+        execute {
             val botMessage = respond("e\n".repeat(10))
-            botMessage.forEach{
-                it.addReaction(Emojis.regionalIndicatorE.toReaction())
-            }
-            message.delete();
+            TODO( "WAIT FOR JAKE")
+//            botMessage.forEach {
+//                it.addReaction(Emojis.regionalIndicatorE.toReaction())
+//            }
+//            message.delete()
         }
     }
 
     command("Agis") {
         description = "Summons Agis from the Pits of Hell"
-        execute() {
+        execute {
             val botMessage = respond {
                 val agis = discord.kord.getUser(Snowflake(219610743727718400))?.mention
                 for (i in 1..15) {

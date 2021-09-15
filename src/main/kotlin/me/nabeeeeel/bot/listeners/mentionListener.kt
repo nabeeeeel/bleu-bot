@@ -15,7 +15,7 @@ fun mentionListener(listService: ListService, discord: Discord) = listeners {
         if (content.contains("nick fight me", true)) {
             val nick = discord.kord.getUser(Snowflake(193228408895963136))?.mention
 
-           message.channel.createMessage("$nick fite me, you evil man!")
+            message.channel.createMessage("$nick fite me, you evil man!")
         }
 //        } else if (content.contains("fight me nick", true)) {
 //            val nick = discord.api.getUser(Snowflake(193228408895963136))?.mention

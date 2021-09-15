@@ -3,7 +3,7 @@ package me.nabeeeeel.bot.commands
 import me.jakejmattson.discordkt.api.arguments.DoubleArg
 import me.jakejmattson.discordkt.api.arguments.IntegerArg
 import me.jakejmattson.discordkt.api.arguments.MultipleArg
-import me.jakejmattson.discordkt.api.dsl.commands
+import me.jakejmattson.discordkt.api.commands.commands
 import kotlin.math.sqrt
 
 
@@ -30,7 +30,7 @@ fun mathCommands() = commands("Math") {
         description = "get product of numbers"
         execute(MultipleArg(DoubleArg)) {
 
-            val sum = args.first.toList().fold(1.0, { sum, next -> sum * next })
+            val sum = args.first.toList().fold(1.0) { sum, next -> sum * next }
             respond("Result: ${"$.1f".format(sum)}")
         }
     }
