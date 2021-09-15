@@ -40,20 +40,18 @@
 | Thumbs    | Question  | Display a question with :thumbsup: and :thumbsdown: as reactions |
 
 ## Fun
-| Commands            | Arguments   | Description                                                                                                                               |
-| ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Agis                |             | Summons Agis from the Pits of Hell                                                                                                        |
-| BeeFacts, Bee, Bees | [User]      | Get a fact about Bees!                                                                                                                    |
-| Boo                 |             | BOOOOOOOOO                                                                                                                                |
-| Brr                 | [@username] | bot go brr                                                                                                                                |
-| Crab                |             | :crab:                                                                                                                                    |
-| ESpam               |             | Prints 'e' 10 times                                                                                                                       |
-| Hug                 | @username   | hug a user                                                                                                                                |
-| Jail                | [User]      | Is someone acting up? They may need to go to jail.                                                                                        |
-| Lick                | @username   | lick a user                                                                                                                               |
-| Paella              |             | Paella (pai·ei·uh) is a classic Spanish rice dish made with rice, saffron, vegetables, chicken, and seafood cooked and served in one pan. |
-| Punch               | @username   | punch a user                                                                                                                              |
-| Whomst              | [Users...]  | Can't decide who to vote kick? Use this.                                                                                                  |
+| Commands | Arguments   | Description                                                                                                                               |
+| -------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Agis     |             | Summons Agis from the Pits of Hell                                                                                                        |
+| BeeFact  |             | Get a fact about Bees!                                                                                                                    |
+| Boo      |             | BOOOOOOOOO                                                                                                                                |
+| Brr      | [@username] | bot go brr                                                                                                                                |
+| Crab     |             | :crab:                                                                                                                                    |
+| Hug      | @username   | hug a user                                                                                                                                |
+| Jail     | [User]      | Is someone acting up? They may need to go to jail.                                                                                        |
+| Paella   |             | Paella (pai·ei·uh) is a classic Spanish rice dish made with rice, saffron, vegetables, chicken, and seafood cooked and served in one pan. |
+| Punch    | @username   | punch a user                                                                                                                              |
+| Whomst   | [Users...]  | Can't decide who to vote kick? Use this.                                                                                                  |
 
 ## Math
 | Commands                      | Arguments       | Description                     |

@@ -14,13 +14,13 @@ import me.nabeeeeel.bot.services.Permission
 fun discordOwnerCommands(configuration: Configuration, listService: ListService) = commands("Discord Owner") {
 
     // looks at configuration object, then set prefix field for the current guild(discord server)
-    command("SetPrefix") {
+    slash("SetPrefix") {
         description = "Set the prefix required for the bot to register a command."
         requiredPermission = Permission.GUILD_OWNER
         execute(AnyArg("Prefix")) {
             val prefix = args.first
             //configuration.guildConfigurations[it.guild!!.idLong]?.prefix = prefix
-            configuration[guild.id.value]?.prefix = prefix // replaces above code by overwriting
+            configuration[guild!!.id.value]?.prefix = prefix // replaces above code by overwriting
             configuration.save()
             respond("Prefix set to: $prefix")
         }
