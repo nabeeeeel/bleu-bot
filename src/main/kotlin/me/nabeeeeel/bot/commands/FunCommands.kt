@@ -46,24 +46,9 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
         }
     }
 
-    command("Lick") {
-        description = "lick a user"
-        execute(UserArg("@username")) {
-            val user = args.first
-            respond {
-                description =
-                    "${this@execute.author.tag} licked ${user.tag} ... what is wrong with you? Why would you make a command that would lick someone? Degenerates."
-                title = "L I C K"
-                color = Color((0..255).random(), (0..255).random(), (0..255).random())
-                image =
-                    listOf("https://media1.tenor.com/images/4a630250fde9e5ac634373369bb58f4b/tenor.gif?itemid=5509072").random()
-            }
-        }
-    }
-
-    command("BeeFacts", "Bee", "Bees") {
+    slash("BeeFact") {
         description = "Get a fact about Bees!"
-        execute(UserArg.optional { it.author }) {
+        execute() {
             respond {
                 title = ":bee: B E E :bee:"
                 color = listOf(Color(222, 222, 0), Color(0, 0, 0)).random()
@@ -146,18 +131,6 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
         }
     }
 
-    command("ESpam") {
-        description = "Prints 'e' 10 times"
-        execute {
-            val botMessage = respond("e\n".repeat(10))
-            TODO( "WAIT FOR JAKE")
-//            botMessage.forEach {
-//                it.addReaction(Emojis.regionalIndicatorE.toReaction())
-//            }
-//            message.delete()
-        }
-    }
-
     command("Agis") {
         description = "Summons Agis from the Pits of Hell"
         execute {
@@ -166,7 +139,6 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
                 for (i in 1..15) {
                     message.channel.createMessage("$agis")
                 }
-
             }
         }
     }
