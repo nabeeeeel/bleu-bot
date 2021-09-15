@@ -38,7 +38,6 @@ fun utilityCommands(configuration: Configuration, listService: ListService) = co
             val (time, message) = args
             respond("Starting timer for $time")
             Timer().schedule((time * 1000).toLong()) {
-                // TODO: suspension / Kotlin Thread
                 GlobalScope.launch {
                     respond("${author.mention} $message")
                 }

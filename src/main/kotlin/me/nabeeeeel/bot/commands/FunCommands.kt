@@ -139,6 +139,7 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
                 for (i in 1..15) {
                     message.channel.createMessage("$agis")
                 }
+
             }
         }
     }
