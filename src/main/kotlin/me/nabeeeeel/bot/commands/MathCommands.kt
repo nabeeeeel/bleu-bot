@@ -12,7 +12,7 @@ fun mathCommands() = commands("Math") {
 
     command("Add") {
         description = "add two numbers"
-        execute(DoubleArg("First #"), DoubleArg("Second #").optional(0.0)) {
+        execute(DoubleArg("First"), DoubleArg("Second").optional(0.0)) {
             val (first, second) = args
             respond("Result: ${first + second}")
         }
@@ -37,7 +37,7 @@ fun mathCommands() = commands("Math") {
 
     command("Divide", "Div") {
         description = "get quotient of two numbers"
-        execute((DoubleArg("First #")), DoubleArg("Second #").optional(1.0)) {
+        execute((DoubleArg("First")), DoubleArg("Second").optional(1.0)) {
             val (first, second) = args
             respond("Result: ${"$.1f".format(first / second)}")
         }
@@ -45,7 +45,7 @@ fun mathCommands() = commands("Math") {
 
     command("SquareRoot") {
         description = "get the square root of a number"
-        execute(DoubleArg("# to Square Root")) {
+        execute(DoubleArg("Number")) {
             val (first) = args
             respond("Result: ${"$.1f".format(sqrt(first))}")
         }
@@ -53,7 +53,7 @@ fun mathCommands() = commands("Math") {
 
     command("Square") {
         description = "get the square of a number"
-        execute(DoubleArg("# to Square")) {
+        execute(DoubleArg("Number")) {
             val (first) = args
             respond("Result: ${"$.1f".format(first * first)}")
 
@@ -62,7 +62,7 @@ fun mathCommands() = commands("Math") {
 
     command("Subtract") {
         description = "subtract two numbers"
-        execute(DoubleArg("First # -"), DoubleArg("Second #").optional(0.0)) {
+        execute(DoubleArg("First"), DoubleArg("Second").optional(0.0)) {
             val (first, second) = args
             respond("Result: ${first - second}")
         }

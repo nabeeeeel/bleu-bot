@@ -5,8 +5,6 @@ import dev.kord.common.Color
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.edit
 import dev.kord.rest.builder.message.modify.embed
-import dev.kord.x.emoji.Emojis
-import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.EveryArg
 import me.jakejmattson.discordkt.api.arguments.UserArg
 import me.jakejmattson.discordkt.api.commands.commands
@@ -43,12 +41,12 @@ fun botOwnerCommands(
     command("AddBeeFact") {
         requiredPermission = Permission.BOT_OWNER
         description = "Add a Bee fact."
-        execute(EveryArg("Bee fact")) {
+        execute(EveryArg("Fact")) {
             listService.beeFacts.add(args.first)
         }
     }
 
-    guildCommand("CreateRolesMessage") {
+    command("CreateRolesMessage") {
         description = "create roles message"
         requiredPermission = Permission.BOT_OWNER
         execute {

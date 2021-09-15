@@ -21,7 +21,7 @@
 ## Bot Owner
 | Commands           | Arguments   | Description                                   |
 | ------------------ | ----------- | --------------------------------------------- |
-| AddBeeFact         | Bee fact    | Add a Bee fact.                               |
+| AddBeeFact         | Fact        | Add a Bee fact.                               |
 | CreateRolesMessage |             | create roles message                          |
 | EditRolesMessage   |             | edits roles message                           |
 | Kill               |             | Kill the bot. It will remember this decision. |
@@ -56,15 +56,15 @@
 | Whomst              | [Users...]  | Can't decide who to vote kick? Use this.                                                                                                  |
 
 ## Math
-| Commands                      | Arguments             | Description                     |
-| ----------------------------- | --------------------- | ------------------------------- |
-| Add                           | First #, [Second #]   | add two numbers                 |
-| Divide, Div                   | First #, [Second #]   | get quotient of two numbers     |
-| Product, Multiply, Mul, Times | Double...             | get product of numbers          |
-| Square                        | # to Square           | get the square of a number      |
-| SquareRoot                    | # to Square Root      | get the square root of a number |
-| Subtract                      | First # -, [Second #] | subtract two numbers            |
-| Sum                           | Integer...            | get sum of numbers              |
+| Commands                      | Arguments       | Description                     |
+| ----------------------------- | --------------- | ------------------------------- |
+| Add                           | First, [Second] | add two numbers                 |
+| Divide, Div                   | First, [Second] | get quotient of two numbers     |
+| Product, Multiply, Mul, Times | Double...       | get product of numbers          |
+| Square                        | Number          | get the square of a number      |
+| SquareRoot                    | Number          | get the square root of a number |
+| Subtract                      | First, [Second] | subtract two numbers            |
+| Sum                           | Integer...      | get sum of numbers              |
 
 ## Testing
 | Commands     | Arguments        | Description                                    |
