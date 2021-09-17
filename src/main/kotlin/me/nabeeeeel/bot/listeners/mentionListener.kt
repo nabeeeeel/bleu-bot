@@ -8,7 +8,7 @@ import me.jakejmattson.discordkt.api.dsl.listeners
 import me.nabeeeeel.bot.services.ListService
 
 
-fun mentionListener(listService: ListService, discord: Discord) = listeners {
+fun mentionListener(discord: Discord) = listeners {
     on<MessageCreateEvent> {
         val content = message.content
 

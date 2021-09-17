@@ -13,6 +13,7 @@ import me.nabeeeeel.bot.services.ListService
 import me.nabeeeeel.bot.services.Permission
 import me.nabeeeeel.bot.services.RoleService
 import kotlin.system.exitProcess
+import me.jakejmattson.discordkt.api.extensions.addReactions
 
 
 // creates category
@@ -61,7 +62,7 @@ fun botOwnerCommands(
                 addField("", roles)
             }
 
-            //botMessage.addReactions(games.map { it.key })
+            botMessage?.addReactions(games.map { it.key })
         }
     }
 

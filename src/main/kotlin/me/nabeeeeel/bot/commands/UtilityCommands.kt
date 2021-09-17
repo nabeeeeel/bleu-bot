@@ -1,6 +1,7 @@
 package me.nabeeeeel.bot.commands
 
 import dev.kord.common.Color
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import me.jakejmattson.discordkt.api.arguments.EveryArg
@@ -15,11 +16,12 @@ import kotlin.concurrent.schedule
 
 
 // creates category
-fun utilityCommands(configuration: Configuration, listService: ListService) = commands("Utility") {
+@DelicateCoroutinesApi
+fun utilityCommands() = commands("Utility") {
 
     slash("Profile") {
         description = "Did someone make their Profile Picture for ants? Well here ya go!"
-        execute(MemberArg("username")) {
+        execute(UserArg("username")) {
 
             val user = args.first
             respond {

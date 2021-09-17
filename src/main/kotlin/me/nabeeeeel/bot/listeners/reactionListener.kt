@@ -10,7 +10,7 @@ import me.nabeeeeel.bot.services.PollService
 import me.nabeeeeel.bot.services.RoleService
 
 
-fun reactionListener(discord: Discord, roleService: RoleService, pollService: PollService) = listeners {
+fun reactionListener(roleService: RoleService) = listeners {
     on<ReactionAddEvent> {
         val games = guild?.asGuild()?.let { roleService.getGames(it) } ?: return@on
 

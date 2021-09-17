@@ -9,7 +9,6 @@ import me.jakejmattson.discordkt.api.commands.commands
 import me.jakejmattson.discordkt.api.extensions.toTimeString
 import me.nabeeeeel.bot.data.Configuration
 import me.nabeeeeel.bot.services.ListService
-import me.nabeeeeel.bot.services.Permission
 import me.nabeeeeel.bot.services.PollService
 import java.util.*
 
@@ -36,52 +35,52 @@ fun testCommands(configuration: Configuration, listService: ListService, pollSer
             }
         }
 
-        // TODO: grab messageID then add a listener to it that will edit the message with the reaction count next to it. Then reorder the items based on the reaction count
-        command("Poll") {
-            // TODO add to DiscordOwnerCommands after finished.
-            requiredPermission = Permission.BOT_OWNER
-            description = "Create a poll. Item Limit: 10"
-            execute(SplitterArg("Poll Title | Item1 | Item2 | ... | Item10")) {
-                val pollList = args.first
-                if (pollList.size > 11) {
-                    respond {
-                        field {
-                            name = "E R R O R"
-                            value = "Only 10 poll items are allowed. :("
-                        }
-                    }
-                    return@execute
-                }
-                val username = author.username
-                val avatar = author.avatar.url
-                val botMessage = respondMenu {
-                    page {
-                        title = ":pencil:  P O L L : ${pollList[0].toUpperCase()} :pencil:"
-                        author {
-                            name = username
-                            icon = avatar
-                        }
-
-                        // list split by |
-                        pollList.drop(1).forEachIndexed { count: Int, option: String ->
-                            field { name = "${pollService.voteEmojiList[count]} $option" }
-                        }
-                    }
-                }
-                var newMap = mutableMapOf(Emojis.one.toReaction() to 0)
-                pollList.drop(1).forEachIndexed { count, option ->
-                    botMessage!!.addReaction(pollService.voteEmojiList[count])
-                    newMap[pollService.voteEmojiList[count]] = 0
-                }
-                val messageID = botMessage!!.id
-
-                pollService.pollMessageId.add(messageID)
-                pollService.polls[messageID] = newMap
+//        TODO("grab messageID then add a listener to it that will edit the message with the reaction count next to it. Then reorder the items based on the reaction count")
+//        command("Poll") {
+//            // TODO add to DiscordOwnerCommands after finished.
+//            requiredPermission = me.nabeeeeel.bot.services.Permission.BOT_OWNER
+//            description = "Create a poll. Item Limit: 10"
+//            execute(SplitterArg("Poll Title | Item1 | Item2 | ... | Item10")) {
+//                val pollList = args.first
+//                if (pollList.size > 11) {
+//                    respond {
+//                        field {
+//                            name = "E R R O R"
+//                            value = "Only 10 poll items are allowed. :("
+//                        }
+//                    }
+//                    return@execute
+//                }
+//                val username = author.username
+//                val avatar = author.avatar.url
+//                val botMessage = respondMenu {
+//                    page {
+//                        title = ":pencil:  P O L L : ${pollList[0].uppercase()} :pencil:"
+//                        author {
+//                            name = username
+//                            icon = avatar
+//                        }
+//
+//                        // list split by |
+//                        pollList.drop(1).forEachIndexed { count: Int, option: String ->
+//                            field { name = "${pollService.voteEmojiList[count]} $option" }
+//                        }
+//                    }
+//                }
+//                var newMap = mutableMapOf(Emojis.one.toReaction() to 0)
+//                pollList.drop(1).forEachIndexed { count, option ->
+//                    botMessage!!.addReaction(pollService.voteEmojiList[count])
+//                    newMap[pollService.voteEmojiList[count]] = 0
+//                }
+//                val messageID = botMessage!!.id
+//
+//                pollService.pollMessageId.add(messageID)
+//                pollService.polls[messageID] = newMap
 
                 //respond("${pollService.polls[messageID]}")
 
-            }
-        }
+//            }
+//        }
 
 //    command("Talk") {
 //        description = "talk to the bot!"

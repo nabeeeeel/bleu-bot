@@ -8,10 +8,11 @@ import me.jakejmattson.discordkt.api.commands.commands
 import me.nabeeeeel.bot.data.Configuration
 import me.nabeeeeel.bot.services.ListService
 import me.nabeeeeel.bot.services.Permission
+import me.jakejmattson.discordkt.api.extensions.addReactions
 
 
 // creates category
-fun discordOwnerCommands(configuration: Configuration, listService: ListService) = commands("Discord Owner") {
+fun discordOwnerCommands(configuration: Configuration) = commands("Discord Owner") {
 
     // looks at configuration object, then set prefix field for the current guild(discord server)
     slash ("SetPrefix") {
@@ -20,7 +21,7 @@ fun discordOwnerCommands(configuration: Configuration, listService: ListService)
         execute(AnyArg("Prefix")) {
             val prefix = args.first
             //configuration.guildConfigurations[it.guild!!.idLong]?.prefix = prefix
-            configuration[guild!!.id.value]?.prefix = prefix // replaces above code by overwriting
+            configuration[guild.id.value]?.prefix = prefix // replaces above code by overwriting
             configuration.save()
             respond("Prefix set to: $prefix")
         }
@@ -32,7 +33,7 @@ fun discordOwnerCommands(configuration: Configuration, listService: ListService)
         execute(EveryArg("Question")) {
             val question = args.first
             val botMessage = respond { description = question }
-            //botMessage.addReactions(Emojis.thumbsup.toReaction(), Emojis.thumbsdown.toReaction())
+            botMessage?.addReactions(Emojis.thumbsup.toReaction(), Emojis.thumbsdown.toReaction())
             message.delete()
         }
     }

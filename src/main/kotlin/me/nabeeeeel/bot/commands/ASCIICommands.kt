@@ -81,24 +81,7 @@ fun asciiCommands(listService: ListService) = commands("ASCII") {
             """.trimIndent()
             )
         }
-        execute(UserArg) {
-            val user = args.first
-            val remaining = (1..2).random()
-            val imposter = if (listOf(true, false).random()) " was an imposter." else " was not an imposter."
 
-            respond(
-                """
-                .      　。　　　　•　    　ﾟ　　。
-                　　.　　　.　　　  　　.　　　　　。　　   。　.
-                 　.　　      。　        ඞ   。　    .    •
-                   •       ${user.username + imposter}　    。　.
-                     。    $remaining Impostors remain   .
-                　 　　。　　 　　　　ﾟ　　　.　      　　　.
-                ,　　　　.　 .　　       .
-                            
-            """.trimIndent()
-            )
-        }
     }
 
     slash("GG") {

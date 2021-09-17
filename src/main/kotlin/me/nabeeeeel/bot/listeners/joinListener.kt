@@ -14,7 +14,7 @@ val guildMaps = mapOf(
     Snowflake(492784031163744277) to Snowflake(492867921186521089) // Mouth Breathers
 )
 
-fun joinListener(discord: Discord) = listeners {
+fun joinListener() = listeners {
 
     on<MemberJoinEvent> {
         // elvis operator, if L is null, execute right side

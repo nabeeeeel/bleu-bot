@@ -8,13 +8,13 @@ import dev.kord.x.emoji.toReaction
 import me.jakejmattson.discordkt.api.arguments.MultipleArg
 import me.jakejmattson.discordkt.api.arguments.UserArg
 import me.jakejmattson.discordkt.api.commands.commands
+import me.jakejmattson.discordkt.api.extensions.addReactions
 import me.nabeeeeel.bot.data.Configuration
-import me.nabeeeeel.bot.extensions.addReactions
 import me.nabeeeeel.bot.services.ListService
 
 
 // creates category
-fun funCommands(configuration: Configuration, listService: ListService) = commands("Fun") {
+fun funCommands(listService: ListService) = commands("Fun") {
 
     command("Punch") {
         description = "punch a user"
@@ -116,30 +116,28 @@ fun funCommands(configuration: Configuration, listService: ListService) = comman
                     "https://media1.tenor.com/images/6493bee2be7ae168a5ef7a68cf751868/tenor.gif?itemid=17298755"
                 description = ":rotating_light: ${user.mention} is going to horny jail :rotating_light:"
             }
-            TODO( "WAIT FOR JAKE")
-//            botMessage.addReactions(
-//                Emojis.rotatingLight.toReaction(),
-//                Emojis.regionalIndicatorG.toReaction(),
-//                Emojis.o2.toReaction(),
-//                Emojis.regionalIndicatorT.toReaction(),
-//                Emojis.regionalIndicatorO.toReaction(),
-//                Emojis.regionalIndicatorJ.toReaction(),
-//                Emojis.a.toReaction(),
-//                Emojis.regionalIndicatorI.toReaction(),
-//                Emojis.regionalIndicatorL.toReaction()
-//            )
+            botMessage!!.addReactions(
+                Emojis.rotatingLight.toReaction(),
+                Emojis.regionalIndicatorG.toReaction(),
+                Emojis.o2.toReaction(),
+                Emojis.regionalIndicatorT.toReaction(),
+                Emojis.regionalIndicatorO.toReaction(),
+                Emojis.regionalIndicatorJ.toReaction(),
+                Emojis.a.toReaction(),
+                Emojis.regionalIndicatorI.toReaction(),
+                Emojis.regionalIndicatorL.toReaction()
+            )
         }
     }
 
     command("Agis") {
         description = "Summons Agis from the Pits of Hell"
         execute {
-            val botMessage = respond {
+           respond {
                 val agis = discord.kord.getUser(Snowflake(219610743727718400))?.mention
                 for (i in 1..15) {
                     message.channel.createMessage("$agis")
                 }
-
             }
         }
     }

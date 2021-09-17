@@ -13,8 +13,7 @@
 | FYP              | [Item]    | For you!                          |
 | FallGuy          |           | Fall Guys?                        |
 | GG               |           | Say GG in the most eccentric way. |
-| Imposter         | User      | Are you the imposter?             |
-|                  | Member    |                                   |
+| Imposter         | Member    | Are you the imposter?             |
 | SurprisedPikachu |           | Surprised Pikachu!                |
 | Wiggle           |           | creates a wiggle                  |
 
@@ -28,10 +27,9 @@
 | monki              | [@username] | gives monki                                   |
 
 ## Compliments
-| Commands   | Arguments   | Description      |
-| ---------- | ----------- | ---------------- |
-| Comp, C    | [@username] | get a compliment |
-| Compliment | Member      | get a compliment |
+| Commands   | Arguments | Description      |
+| ---------- | --------- | ---------------- |
+| Compliment | Member    | get a compliment |
 
 ## Discord Owner
 | Commands  | Arguments | Description                                                      |
@@ -65,10 +63,9 @@
 | Sum                           | Integer...      | get sum of numbers              |
 
 ## Testing
-| Commands     | Arguments        | Description                                    |
-| ------------ | ---------------- | ---------------------------------------------- |
-| Ping, Uptime |                  | a test command to make sure the bot is working |
-| Poll         | TextWithSplitter | Create a poll. Item Limit: 10                  |
+| Commands     | Arguments | Description                                    |
+| ------------ | --------- | ---------------------------------------------- |
+| Ping, Uptime |           | a test command to make sure the bot is working |
 
 ## Utility
 | Commands | Arguments  | Description                                                                       |
